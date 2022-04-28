@@ -1,2 +1,9 @@
 # Projeto-e-Administracao-de-Banco-de-Dados
-Repositório para guardar scripts da disciplina de Projeto e Administração de banco de dados
+
+## Informações 
+
+Nome: Wesley Vitor silva de morais
+
+Matricula: 20200016840
+
+E-mail: wesleydemorais@outlook.com.br
