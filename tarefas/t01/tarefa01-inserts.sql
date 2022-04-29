@@ -63,3 +63,16 @@ values ('ES', 'Projeto de Engenharia de Software', 1, 19, '2018-02-26', '2018-06
 
 insert into projeto(nome, descricao, cod_depto, cod_responsavel, data_inicio, data_fim)
 values ('DL', 'Projeto de Direito e Legislação', 1, 19, '2019-02-26', '2019-06-30');
+
+/* Inserindo atividades */
+insert into atividade(nome, descricao, cod_responsavel, data_inicio, data_fim)
+values ('APF - Atividade 1','Fazer atividade 1', 19, '2018-02-26', '2018-06-30');
+insert into atividade(nome, descricao, cod_responsavel, data_inicio, data_fim)
+values ('APF - Atividade 2','Fazer atividade 2', 19, '2018-02-26', '2018-06-30');
+insert into atividade(nome, descricao, cod_responsavel, data_inicio, data_fim)
+values ('APF - Atividade 3','Fazer atividade 3', 19, '2018-02-26', '2018-06-30');
+
+insert into atividade(nome, descricao, cod_responsavel, data_inicio, data_fim)
+values ('Monitoria - Atividade 1','Fazer atividade 1', 20, '2018-02-26', '2018-06-30');
+insert into atividade(nome, descricao, cod_responsavel, data_inicio, data_fim)
+values ('Monitoria - Atividade 2','Fazer atividade 1', 20, '2018-02-26', '2018-06-30');
