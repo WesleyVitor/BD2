@@ -76,3 +76,16 @@ insert into atividade(nome, descricao, cod_responsavel, data_inicio, data_fim)
 values ('Monitoria - Atividade 1','Fazer atividade 1', 20, '2018-02-26', '2018-06-30');
 insert into atividade(nome, descricao, cod_responsavel, data_inicio, data_fim)
 values ('Monitoria - Atividade 2','Fazer atividade 1', 20, '2018-02-26', '2018-06-30');
+
+/* Inserindo atividade_projeto */
+insert into atividade_projeto(cod_projeto, cod_atividade)
+values (1,1);
+insert into atividade_projeto(cod_projeto, cod_atividade)
+values (2,1);
+insert into atividade_projeto(cod_projeto, cod_atividade)
+values (3,2);
+insert into atividade_projeto(cod_projeto, cod_atividade)
+values (1,2);
+insert into atividade_projeto(cod_projeto, cod_atividade)
+values (4,5);
+
