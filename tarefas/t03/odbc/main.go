@@ -12,4 +12,5 @@ func main(){
 	dml.InserirFuncionario()
 	dml.InserirProjeto()
 	dml.InserirAtividade()
+	dml.UpdateResponsavel()
 }
