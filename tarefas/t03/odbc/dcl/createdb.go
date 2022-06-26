@@ -46,13 +46,7 @@ func HandlerError(err error){
 	}
 }
 
-
-
-
-func CreateDB(){
-
-	db := Connect()
-	defer db.Close()
+func handleEmployee(db *sql.DB){
 	creatingTableEmployee := fmt.Sprint(`
 		CREATE TABLE IF NOT EXISTS funcionario (
 			codigo serial,
@@ -68,7 +62,84 @@ func CreateDB(){
 	`)
 	_,err := db.Exec(creatingTableEmployee)
 	HandlerError(err)
+}
 
+func handleDept(db *sql.DB){
+	creatingTableDept := fmt.Sprint(`
+		CREATE TABLE IF NOT EXISTS departamento (
+			codigo serial,
+			sigla varchar(10),
+			descricao varchar(50),
+			codGerente int,
+			PRIMARY KEY (codigo),
+			UNIQUE(sigla),
+			FOREIGN KEY (codGerente) REFERENCES funcionario(codigo) on delete set null on update cascade
+		);
+	`)
+	_,err := db.Exec(creatingTableDept)
+	HandlerError(err)
+}
+
+func handleProject(db *sql.DB){
+	creatingTableProject := fmt.Sprint(`
+		CREATE TABLE IF NOT EXISTS projeto (
+			codigo serial,
+			nome varchar(50),
+			descricao varchar(250),
+			codResponsavel int,
+			codDepto int,
+			dataInicio date, 
+			dataFim date,
+			PRIMARY KEY (codigo),
+			UNIQUE(nome),
+			FOREIGN KEY (codResponsavel) REFERENCES funcionario(codigo) on delete set null on update cascade,
+			FOREIGN KEY (codDepto) REFERENCES departamento(codigo) on delete set null on update cascade
+		);
+	`)
+	_,err := db.Exec(creatingTableProject)
+	HandlerError(err)
+}
+
+func handleActivity(db *sql.DB){
+	creatingTableActivity := fmt.Sprint(`
+		CREATE TABLE IF NOT EXISTS atividade (
+			codigo serial,
+			descricao varchar(250),
+			codProjeto int,
+			dataInicio date, 
+			dataFim date,
+			PRIMARY KEY (codigo),
+			FOREIGN KEY (codProjeto) REFERENCES projeto(codigo) on delete set null on update cascade
+
+		);
+	`)
+	_,err := db.Exec(creatingTableActivity)
+	HandlerError(err)
+}
+
+func changeEmployeeADDForeignKEY(db *sql.DB){
+	command := fmt.Sprint(`
+		alter table funcionario ADD CONSTRAINT funcDeptoFK FOREIGN KEY (codDepto) 
+		REFERENCES departamento(codigo) on delete set null on update cascade;
+	`)
+	_,err := db.Exec(command)
+	HandlerError(err)
+}
+
+
+
+
+
+func CreateDB(){
+
+	db := Connect()
+	defer db.Close()
+	
+	handleEmployee(db)
+	handleDept(db)
+	handleProject(db)
+	handleActivity(db)
+	changeEmployeeADDForeignKEY(db)
 
 	// rows, err := db.Query(`select * from pessoa;`)
 	// HandlerError(err)
