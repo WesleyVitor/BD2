@@ -7,7 +7,7 @@ import (
 
 func main(){
 	
-	dcl.Model()
+	dcl.CreateDB()
 	
 	
 }
