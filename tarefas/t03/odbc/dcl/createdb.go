@@ -28,17 +28,7 @@ func Connect()*sql.DB{
 	return db
 }
 
-// func readingRows(rows *sql.Rows){
-// 	for rows.Next() {
-// 		var ID string
-// 		var Nome string
-// 		err := rows.Scan(&ID, &Nome)
-// 		if err != nil {
-// 			panic("Deu ruim no for")
-// 		}
-// 		fmt.Println(ID, Nome)
-// 	}
-// }
+
 
 func HandlerError(err error){
 	if err != nil {
@@ -141,10 +131,6 @@ func CreateDB(){
 	handleActivity(db)
 	changeEmployeeADDForeignKEY(db)
 
-	// rows, err := db.Query(`select * from pessoa;`)
-	// HandlerError(err)
-
-	//defer rows.Close()
 
 	
 }

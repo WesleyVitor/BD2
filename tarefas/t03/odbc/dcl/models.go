@@ -1,28 +1,31 @@
 package dcl
 
+import "database/sql"
+
+
 type Funcionario struct {
 	Codigo int
 	Nome string
 	Sexo string
 	DtNasc string
 	Salario float64
-	CodSupervisor int
-	CodDepto int
+	CodSupervisor sql.NullInt64
+	CodDepto sql.NullInt64
 }
 
 type Departamento struct {
 	Codigo int 
 	Sigla string
 	Descricao string
-	CodGerente int
+	CodGerente sql.NullInt64
 }
 
 type Projeto struct {
 	Codigo int
 	Nome string
 	Descricao string
-	CodResponsavel int
-	CodDepto int
+	CodResponsavel sql.NullInt64
+	CodDepto sql.NullInt64
 	DataInicio string
 	DataFim string
 	
@@ -31,7 +34,7 @@ type Projeto struct {
 type Atividade struct{
 	Codigo int 
 	Descricao string
-	CodProjeto int
+	CodProjeto sql.NullInt64
 	DataInicio string
 	DataFim string
 }
