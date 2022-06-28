@@ -1,6 +1,7 @@
 package models
 
 import (
+	"fmt"
 	"time"
 
 	"gorm.io/gorm"
@@ -37,6 +38,10 @@ type Projeto struct{
 	DataInicio time.Time
 	DataFim time.Time
 	
+}
+
+func (productInfo Projeto) ToString() string {
+	return fmt.Sprintf("id: %d\nname: %s\nprice: %s", productInfo.Codigo, productInfo.Nome, productInfo.Descricao)
 }
 
 type Atividade struct{

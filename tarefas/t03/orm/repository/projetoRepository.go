@@ -12,3 +12,9 @@ func CriarProjeto(p *models.Projeto, db *gorm.DB) {
 	}
 	
 }
+
+func ListarProjetos(db *gorm.DB) []models.Projeto{
+	var projetos []models.Projeto
+	db.Table("projetos").Select("codigo, nome, descricao").Scan(&projetos)
+	return projetos
+}

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/WesleyVitor/connection"
@@ -24,9 +25,14 @@ func main(){
 	projeto := models.Projeto{Nome:"SIGARTE",Descricao:"Projeto de artesões",
 	DataInicio:time.Date(2022,8,11,0,0,0,0,time.UTC),DataFim:time.Date(2022,12,11,0,0,0,0,time.UTC)}
 	repository.CriarProjeto(&projeto,db)
-	atividade := models.Atividade{Descricao:"Fazer o CRUD",CodProjeto:1,
-	DataInicio:time.Date(2022,8,11,0,0,0,0,time.UTC),DataFim:time.Date(2022,12,11,0,0,0,0,time.UTC)}
-	repository.CriarAtividade(&atividade, db)
+	// atividade := models.Atividade{Descricao:"Fazer o CRUD",CodProjeto:1,
+	// DataInicio:time.Date(2022,8,11,0,0,0,0,time.UTC),DataFim:time.Date(2022,12,11,0,0,0,0,time.UTC)}
+	// repository.CriarAtividade(&atividade, db)
+	result := repository.ListarProjetos(db)
+	for _, productInfo := range result {
+		fmt.Println(productInfo.ToString())
+		fmt.Println("--------------------")
+	}
 
 	
 	
